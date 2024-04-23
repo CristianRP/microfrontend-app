@@ -1,0 +1,12 @@
+[submodule "auth"]
+	path = auth
+	url = https://github.com/CristianRP/mfe-auth
+[submodule "container"]
+	path = container
+	url = https://github.com/CristianRP/mfe-container
+[submodule "dashboard"]
+	path = dashboard
+	url = https://github.com/CristianRP/mfe-dashboard
+[submodule "marketing"]
+	path = marketing
+	url = https://github.com/CristianRP/mfe-marketing
