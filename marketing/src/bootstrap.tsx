@@ -1,12 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createMemoryHistory } from 'history';
+import { createMemoryHistory, LocationListener } from 'history';
 
 import App from './App';
 
+interface ListenerProps {
+  onNavigate: LocationListener;
+}
+
 // Mount function to start up the app
-const mount = (element: HTMLElement) => {
+const mount = (element: HTMLElement, { onNavigate }: ListenerProps) => {
   const history = createMemoryHistory();
+
+  if (onNavigate) {
+    history.listen(onNavigate);
+  }
 
   ReactDOM.render(
     <App history={ history } />,
@@ -20,7 +28,11 @@ if (process.env.NODE_ENV === 'development') {
   const devRoot = document.querySelector<HTMLElement>('#_marketing-dev-root');
 
   if (devRoot) {
-    mount(devRoot);
+    mount(devRoot, {
+      onNavigate: () => {
+        console.log('Mounted in isolation');
+      }
+    });
   }
 }
 
