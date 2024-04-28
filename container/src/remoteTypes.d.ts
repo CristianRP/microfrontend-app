@@ -9,3 +9,9 @@ declare module 'auth/AuthApp' {
 
   export { mount };
 }
+
+declare module 'dashboard/DashboardApp' {
+  const mount: Function;
+
+  export { mount };
+}
