@@ -3,3 +3,9 @@ declare module 'marketing/MarketingApp' {
 
   export { mount };
 }
+
+declare module 'auth/AuthApp' {
+  const mount: Function;
+
+  export { mount };
+}
