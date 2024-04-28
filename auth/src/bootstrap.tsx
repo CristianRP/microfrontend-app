@@ -7,6 +7,7 @@ import App from './App';
 interface ListenerProps {
   onNavigate?: LocationListener;
   defaultHistory?: MemoryHistory;
+  initialPath?: string;
 }
 
 type LocationType = {
@@ -18,8 +19,10 @@ type LocationType = {
 }
 
 // Mount function to start up the app
-const mount = (element: HTMLElement, { onNavigate, defaultHistory }: ListenerProps) => {
-  const history = defaultHistory || createMemoryHistory();
+const mount = (element: HTMLElement, { onNavigate, defaultHistory, initialPath }: ListenerProps) => {
+  const history = defaultHistory || createMemoryHistory({
+    initialEntries: [initialPath]
+  });
 
   if (onNavigate) {
     history.listen(onNavigate);
