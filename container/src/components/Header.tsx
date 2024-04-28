@@ -51,15 +51,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 interface HeaderProps {
-  signedIn: boolean,
+  isSignedIn: boolean,
   onSignOut: Function,
 }
 
-export const Header = ({ signedIn, onSignOut }: HeaderProps) => {
+export const Header = ({ isSignedIn, onSignOut }: HeaderProps) => {
   const classes = useStyles();
 
   const onClick = () => {
-    if (signedIn && onSignOut) {
+    if (isSignedIn && onSignOut) {
       onSignOut();
     }
   }
@@ -87,10 +87,10 @@ export const Header = ({ signedIn, onSignOut }: HeaderProps) => {
             variant='outlined'
             className={ classes.link }
             component={ RouterLink }
-            to={ signedIn ? '/' : '/auth/signin'}
+            to={ isSignedIn ? '/' : '/auth/signin'}
             onClick={ onClick }
           >
-            { signedIn ? 'Logout' : 'Login' }
+            { isSignedIn ? 'Logout' : 'Login' }
           </Button>
         </Toolbar>
       </AppBar>

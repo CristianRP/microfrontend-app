@@ -12,7 +12,11 @@ type LocationType = {
   key: string;
 }
 
-export default () => {
+interface AuthAppProps {
+  onSignIn: Function;
+}
+
+export default ({ onSignIn }: AuthAppProps) => {
   const ref = useRef(null);
   const history = useHistory();
 
@@ -24,7 +28,8 @@ export default () => {
         if (pathname !== nextPathname) {
           history.push(nextPathname);
         }
-      }
+      },
+      onSignIn,
     });
 
     history.listen(onParentNavigate);
