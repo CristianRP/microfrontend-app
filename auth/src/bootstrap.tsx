@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import ReactDOM from 'react-dom';
 import { createMemoryHistory, LocationListener, createBrowserHistory, MemoryHistory } from 'history';
 
 import App from './App';
 
 interface ListenerProps {
+  onSignIn?: MouseEventHandler;
   onNavigate?: LocationListener;
   defaultHistory?: MemoryHistory;
   initialPath?: string;
@@ -19,7 +20,7 @@ type LocationType = {
 }
 
 // Mount function to start up the app
-const mount = (element: HTMLElement, { onNavigate, defaultHistory, initialPath }: ListenerProps) => {
+const mount = (element: HTMLElement, { onSignIn, onNavigate, defaultHistory, initialPath }: ListenerProps) => {
   const history = defaultHistory || createMemoryHistory({
     initialEntries: [initialPath]
   });
@@ -29,7 +30,7 @@ const mount = (element: HTMLElement, { onNavigate, defaultHistory, initialPath }
   }
 
   ReactDOM.render(
-    <App history={ history } />,
+    <App onSignIn={onSignIn} history={ history } />,
     element,
   );
 
